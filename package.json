@@ -1,0 +1,73 @@
+{
+  "name": "excel-filter-app",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Excel Filter Tool for processing Excel files",
+  "author": {
+    "name": "Excel Filter Tool Team"
+  },
+  "main": "electron/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "electron:dev": "electron .",
+    "electron:build": "electron-builder build",
+    "package-win": "vite build && electron-builder build --win",
+    "package-win32": "vite build && electron-builder build --win --ia32",
+    "package-win64": "vite build && electron-builder build --win --x64"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.3.8",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.21",
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4",
+    "vite": "^5.0.8"
+  },
+  "build": {
+    "appId": "com.excel.filter.tool",
+    "productName": "Excel筛选工具",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Excel筛选工具"
+    }
+  }
+}
